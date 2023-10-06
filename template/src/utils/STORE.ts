@@ -4,18 +4,21 @@ import {
   combineReducers,
   configureStore,
 } from '@reduxjs/toolkit';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import {TypedUseSelectorHook, useSelector} from 'react-redux';
 import {persistReducer, persistStore} from 'redux-persist';
+import Mmkv from './storage';
+import PersistedReducer from '../redux/PersistedReducer';
 
 const persistConfig = {
-  key: 'loggedInUsers', // The key under which the data will be stored in AsyncStorage
-  storage: AsyncStorage,
+  key: 'PersistedReducer', // The key under which the data will be stored in AsyncStorage
+  storage: new Mmkv(),
 };
 
-const persistedReducer = persistReducer(persistConfig, {});
+const persistedReducer = persistReducer(persistConfig, PersistedReducer);
 
-const reducer = combineReducers({});
+const reducer = combineReducers({
+  persistedReducer,
+});
 
 export const STORE = configureStore({
   reducer,

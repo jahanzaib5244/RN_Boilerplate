@@ -5,4 +5,5 @@ export default {
   primary: '#0A84FF',
   black_text: '#494949',
   light_gray: '#F2F2F2',
+  danger: '#DC3545',
 };

@@ -1,5 +1,4 @@
 import axios, {AxiosInstance, AxiosResponse} from 'axios';
-import {STORE} from './STORE';
 
 // Function to handle successful API responses
 const handleSuccess = (response: AxiosResponse): any => {

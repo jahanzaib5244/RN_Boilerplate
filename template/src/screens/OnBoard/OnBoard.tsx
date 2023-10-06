@@ -1,26 +1,29 @@
-import {View, Modal} from 'react-native';
-import React, {useEffect, useState} from 'react';
-import {AppButton} from '../../components';
+import {View} from 'react-native';
+import React, {useState} from 'react';
+import {AppButton, AppInput} from '../../components';
 import {useNavigation} from '@react-navigation/native';
 import {NavigationProp} from '@react-navigation/native';
 import {paramsList} from '../../utils/NavigationInterface';
-import i18next from '../../utils/i18next';
 import {useTranslation} from 'react-i18next';
+import {useDispatch} from 'react-redux';
+import {changeLanguage} from '../../redux/PersistedReducer/actions';
 
 const OnBoard = () => {
   const navigation = useNavigation<NavigationProp<paramsList>>();
   const {t} = useTranslation();
-  const [visible, setVisible] = useState(false);
-
+  const [value, setValue] = useState('');
+  const dispatch = useDispatch();
   const changeLan = () => {
-    i18next.changeLanguage('fr');
-    setVisible(false);
+    dispatch(changeLanguage('fr'));
   };
   return (
     <View>
-      <Modal visible={visible} onRequestClose={() => setVisible(false)}>
-        <AppButton title={t('welcome')} onPress={() => changeLan()} />
-      </Modal>
+      <AppInput
+        label={'Email'}
+        value={value}
+        onChangeText={e => setValue(e)}
+        error={'hello'}
+      />
       <AppButton title={t('greeting')} onPress={() => changeLan()} />
     </View>
   );

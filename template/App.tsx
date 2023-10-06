@@ -1,13 +1,17 @@
-import {View} from 'react-native';
-import React, {useState} from 'react';
-import Home from './src/screens/Home/Home';
-import Rating from './src/screens/Rating/Rating';
-import Chat from './src/screens/chat/Chat';
-import DatePicker from 'calendar-date-picker-react-native';
+import React from 'react';
 import RootNavigation from './src/navigator/RootNavigation';
+import {Provider} from 'react-redux';
+import {STORE, presistStore} from './src/utils/STORE';
+import {PersistGate} from 'redux-persist/integration/react';
 
 const App = () => {
-  return <RootNavigation />;
+  return (
+    <Provider store={STORE}>
+      <PersistGate persistor={presistStore}>
+        <RootNavigation />
+      </PersistGate>
+    </Provider>
+  );
 };
 
 export default App;
