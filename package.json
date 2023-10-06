@@ -1,0 +1,26 @@
+{
+  "name": "react-native-custom-template",
+  "version": "0.0.1",
+  "description": "React Native Template with basic components, navigators, localization and redux toolkit",
+  "repository": "git@github.com:jahanzaib5244/RNTemplate.git",
+  "author": "jahanzaib5244 <jahanzaib5244@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "test": "exit 0"
+  },
+  "files": [
+    "template",
+    "template.config.js"
+  ],
+  "keywords": [
+    "react-native",
+    "typescript",
+    "jest",
+    "template",
+    "boilerplate"
+  ],
+  "bugs": {
+    "url": "https://github.com/jahanzaib5244/RNTemplate/issues"
+  },
+  "homepage": "https://github.com/jahanzaib5244/RNTemplate/#readme"
+}
