@@ -13,6 +13,7 @@ export default {
   noti: require('../assets/icons/noti.png'),
   attachment: require('../assets/icons/Attachment.png'),
   send: require('../assets/icons/send.png'),
+  right_arrow: require('../assets/icons/right-arrow.png'),
 
   // Images path
   background: require('../assets/images/background.png'),

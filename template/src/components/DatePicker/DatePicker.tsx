@@ -7,6 +7,7 @@ import moment from 'moment';
 import {headerInterface, props} from './interface';
 import {MarkingProps} from 'react-native-calendars/src/calendar/day/marking';
 import {days} from './useDatePicker';
+import {IMAGES_PATH} from '../../constants';
 
 const DatePicker: React.FC<props> = props => {
   const {
@@ -181,7 +182,7 @@ const DatePicker: React.FC<props> = props => {
               ]}>
               <Image
                 style={[styles.arrow, style?.arrow, style?.leftArrow]}
-                source={require('./assets/left-arrow.png')}
+                source={IMAGES_PATH.left_arrow}
               />
             </Pressable>
           )}
@@ -200,7 +201,7 @@ const DatePicker: React.FC<props> = props => {
               ]}>
               <Image
                 style={[styles.arrow, style?.arrow, style?.rightArrow]}
-                source={require('./assets/right-arrow.png')}
+                source={IMAGES_PATH.right_arrow}
               />
             </Pressable>
           )}

@@ -1,12 +1,13 @@
 import {View} from 'react-native';
 import React, {useState} from 'react';
-import {AppButton, AppInput} from '../../components';
+import {AppButton, AppInput, TimePicker} from '../../components';
 import {useNavigation} from '@react-navigation/native';
 import {NavigationProp} from '@react-navigation/native';
 import {paramsList} from '../../utils/NavigationInterface';
 import {useTranslation} from 'react-i18next';
 import {useDispatch} from 'react-redux';
 import {changeLanguage} from '../../redux/PersistedReducer/actions';
+import {RunToast} from '../../helper';
 
 const OnBoard = () => {
   const navigation = useNavigation<NavigationProp<paramsList>>();
@@ -14,7 +15,11 @@ const OnBoard = () => {
   const [value, setValue] = useState('');
   const dispatch = useDispatch();
   const changeLan = () => {
-    dispatch(changeLanguage('fr'));
+    // dispatch(changeLanguage('fr'));
+    RunToast({
+      title: 'hello',
+      subTitle: 'hello this is subtitle',
+    });
   };
   return (
     <View>
@@ -25,6 +30,7 @@ const OnBoard = () => {
         error={'hello'}
       />
       <AppButton title={t('greeting')} onPress={() => changeLan()} />
+      <TimePicker />
     </View>
   );
 };
