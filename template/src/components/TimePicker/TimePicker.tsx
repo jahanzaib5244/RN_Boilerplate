@@ -1,80 +1,103 @@
-import {View, ScrollView, Text} from 'react-native';
+import {View, Text, StyleSheet} from 'react-native';
 import React from 'react';
 import {styles} from './styles';
-import Animated, {
-  Easing,
-  runOnJS,
-  useAnimatedGestureHandler,
-  useAnimatedStyle,
-  useSharedValue,
-  withSpring,
-  withTiming,
-} from 'react-native-reanimated';
+import Animated from 'react-native-reanimated';
 
 import {PanGestureHandler} from 'react-native-gesture-handler';
-
-const Hours: Array<string> = [];
-const minutes: Array<string> = [];
-
-for (let i = 0; i <= 12; i++) {
-  Hours.push(i <= 9 ? `0${i}` : `${i}`);
-}
-
-for (let i = 0; i <= 60; i++) {
-  minutes.push(i <= 9 ? `0${i}` : `${i}`);
-}
+import MaskedView from '@react-native-masked-view/masked-view';
+import useTimePicker from './useTimePicker';
+import AppText from '../AppText/AppText';
 
 export default function TimePicker() {
-  const translateY = useSharedValue(0);
+  const {
+    hoursAnimatedStyle,
+    minutesAnimatedStyle,
+    typeAnimatedStyle,
+    hoursGestureHandler,
+    minutesGestureHandler,
+    typeGestureHandler,
+    Hours,
+    minutes,
+  } = useTimePicker();
 
-  const gestureHandler = useAnimatedGestureHandler({
-    onActive: event => {
-      translateY.value = event.translationY;
-    },
-    onEnd: event => {
-      if (event.translationY > 0) {
-        translateY.value = 0;
-      } else {
-        translateY.value = withSpring(-100, {}, isFinished => {
-          if (isFinished) {
-            //   runOnJS(handleItemChange)();
-          }
-        });
-      }
-    },
-  });
+  const RenderedHours = () => {
+    return (
+      <Animated.View
+        style={[
+          hoursAnimatedStyle,
+          styles.items_container,
+          {alignItems: 'flex-end'},
+        ]}>
+        {Hours.map((item, index) => (
+          <View
+            key={index}
+            style={[styles.item, {marginTop: index === 0 ? 50 : 0}]}>
+            <Text style={{fontSize: 24, fontWeight: '700'}}>{item}</Text>
+          </View>
+        ))}
+      </Animated.View>
+    );
+  };
+  const RenderedMinutes = () => {
+    return (
+      <Animated.View style={[minutesAnimatedStyle, styles.items_container]}>
+        {minutes.map((item, index) => (
+          <View
+            key={index}
+            style={[styles.item, {marginTop: index === 0 ? 50 : 0}]}>
+            <Text style={{fontSize: 24, fontWeight: '700'}}>{item}</Text>
+          </View>
+        ))}
+      </Animated.View>
+    );
+  };
 
-  const animatedStyle = useAnimatedStyle(() => {
-    return {
-      transform: [{translateY: translateY.value}],
-    };
-  });
+  const RenderedType = () => {
+    return (
+      <Animated.View style={[typeAnimatedStyle, styles.items_container]}>
+        {['AM', 'PM'].map((item, index) => (
+          <View
+            key={index}
+            style={[styles.item, {marginTop: index === 0 ? 50 : 0}]}>
+            <Text style={{fontSize: 24, fontWeight: '700'}}>{item}</Text>
+          </View>
+        ))}
+      </Animated.View>
+    );
+  };
 
-  //   const handleItemChange = () => {
-  //     // Calculate the selected item based on translateY value
-  //     const selectedItemIndex = Math.floor((-translateY.value + 50) / 100);
-  //     console.log('Selected Item:', items[selectedItemIndex]);
-  //   };
+  const maskElement = (
+    <View style={styles.masked_elemnt_wrapper}>
+      <RenderedHours />
+      <AppText style={styles.time_seprator}>:</AppText>
+      <RenderedMinutes />
+      <RenderedType />
+    </View>
+  );
 
   return (
     <View style={styles.root}>
-      <View>
-        <PanGestureHandler onGestureEvent={gestureHandler}>
-          <Animated.View
-            style={[{height: 200, backgroundColor: '#ccc'}, animatedStyle]}>
-            {Hours.map((item, index) => (
-              <View
-                key={index}
-                style={{
-                  height: 50,
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                }}>
-                <Text style={{fontSize: 24}}>{item}</Text>
-              </View>
-            ))}
-          </Animated.View>
-        </PanGestureHandler>
+      <MaskedView androidRenderingMode={'software'} {...{maskElement}}>
+        <View style={styles.masked_view} />
+        <View style={styles.maked_view_black} />
+        <View style={styles.masked_view} />
+      </MaskedView>
+      <View style={styles.absolute_container}>
+        <View style={styles.gesture_wrapper}>
+          <PanGestureHandler onGestureEvent={hoursGestureHandler}>
+            <Animated.View style={StyleSheet.absoluteFillObject} />
+          </PanGestureHandler>
+        </View>
+        <View style={styles.gesture_wrapper}>
+          <PanGestureHandler onGestureEvent={minutesGestureHandler}>
+            <Animated.View style={StyleSheet.absoluteFillObject} />
+          </PanGestureHandler>
+        </View>
+        <View style={styles.gesture_wrapper}>
+          <PanGestureHandler onGestureEvent={typeGestureHandler}>
+            <Animated.View style={StyleSheet.absoluteFillObject} />
+          </PanGestureHandler>
+        </View>
       </View>
     </View>
   );
