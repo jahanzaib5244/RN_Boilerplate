@@ -7,7 +7,7 @@ import {paramsList} from '../../utils/NavigationInterface';
 import {useTranslation} from 'react-i18next';
 import {useDispatch} from 'react-redux';
 import {changeLanguage} from '../../redux/PersistedReducer/actions';
-import {RunToast} from '../../helper';
+import {RunToast, showAlert} from '../../helper';
 
 const OnBoard = () => {
   const navigation = useNavigation<NavigationProp<paramsList>>();
@@ -29,8 +29,12 @@ const OnBoard = () => {
         onChangeText={e => setValue(e)}
         error={'hello'}
       />
-      <AppButton title={t('greeting')} onPress={() => changeLan()} />
+      <AppButton title={'show Toast Message'} onPress={() => changeLan()} />
       <TimePicker />
+      <AppButton
+        title={'show Alert'}
+        onPress={() => showAlert({title: 'alert', message: 'message'})}
+      />
     </View>
   );
 };

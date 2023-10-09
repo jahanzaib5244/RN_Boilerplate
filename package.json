@@ -22,8 +22,5 @@
   "bugs": {
     "url": "https://github.com/jahanzaib5244/RNTemplate/issues"
   },
-  "homepage": "https://github.com/jahanzaib5244/RNTemplate/#readme",
-  "dependencies": {
-    "react-native-awesome-alerts": "^2.0.0"
-  }
+  "homepage": "https://github.com/jahanzaib5244/RNTemplate/#readme"
 }
