@@ -80,4 +80,8 @@ export const styles = StyleSheet.create({
     fontWeight: '600',
     color: COLORS.primary,
   },
+  time: {
+    fontSize: 24,
+    fontWeight: '700',
+  },
 });

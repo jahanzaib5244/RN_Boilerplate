@@ -1,4 +1,5 @@
 import axios, {AxiosInstance, AxiosResponse} from 'axios';
+import {BASE_URL} from '@env';
 
 // Function to handle successful API responses
 const handleSuccess = (response: AxiosResponse): any => {
@@ -17,7 +18,7 @@ const callApi = (
   content_type = 'application/json',
 ): AxiosInstance => {
   const axiosInstance = axios.create({
-    baseURL: 'base url',
+    baseURL: BASE_URL,
     timeout: 15000,
     headers: {
       Accept: 'application/json',

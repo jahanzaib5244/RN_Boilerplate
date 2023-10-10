@@ -10,6 +10,7 @@ export const styles = StyleSheet.create({
     alignSelf: 'center',
     alignItems: 'center',
     justifyContent: 'center',
+    marginVertical: 10,
   },
   button_text: {
     color: COLORS.white,

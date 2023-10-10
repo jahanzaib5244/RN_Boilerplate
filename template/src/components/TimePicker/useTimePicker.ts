@@ -7,6 +7,9 @@ import {
   withDecay,
   withSpring,
 } from 'react-native-reanimated';
+import {selectedTime} from './interface';
+import {useEffect} from 'react';
+import moment from 'moment';
 
 const Hours: Array<string> = [];
 const minutes: Array<string> = [];
@@ -21,7 +24,10 @@ for (let i = 0; i <= 59; i++) {
 
 const formatType = ['AM', 'PM'];
 
-export default function useTimePicker() {
+export default function useTimePicker(
+  handelChange: (e: selectedTime) => void,
+  onPressConfirm: () => void,
+) {
   const hoursY = useSharedValue(0);
   const minutesY = useSharedValue(0);
   const typeY = useSharedValue(0);
@@ -31,7 +37,37 @@ export default function useTimePicker() {
     const hours = Math.round(Math.abs(hoursY.value / 50));
     const time = Math.round(Math.abs(minutesY.value / 50));
     const type = Math.round(Math.abs(typeY.value / 50));
-    console.log(Hours[hours], minutes[time], formatType[type]);
+    console.log({
+      hour: Hours[hours],
+      minutes: minutes[time],
+      format: formatType[type],
+      time: `${Hours[hours]}:${minutes[time]} ${formatType[type]}`,
+    });
+    handelChange({
+      hour: Hours[hours],
+      minutes: minutes[time],
+      format: formatType[type].toLowerCase(),
+      time: `${Hours[hours]}:${minutes[time]} ${formatType[
+        type
+      ].toLowerCase()}`,
+    });
+  };
+
+  useEffect(() => {
+    const [hour, minute, format] = moment().format('hh/mm/a').split('/');
+    const currentHourIndex = Hours.findIndex(item => item === hour);
+    const currentMinuteIndex = minutes.findIndex(item => item === minute);
+    const currentFormatIndex = formatType.findIndex(
+      item => item.toLowerCase() === format.toLowerCase(),
+    );
+    hoursY.value = withSpring(-currentHourIndex * 50, {duration: 100});
+    minutesY.value = withSpring(-currentMinuteIndex * 50, {duration: 100});
+    typeY.value = withSpring(-currentFormatIndex * 50, {duration: 100});
+  }, []);
+
+  const onConfirm = () => {
+    handleItemChange();
+    onPressConfirm();
   };
 
   function calculateDecay(
@@ -156,5 +192,6 @@ export default function useTimePicker() {
     typeGestureHandler,
     Hours,
     minutes,
+    onConfirm,
   };
 }

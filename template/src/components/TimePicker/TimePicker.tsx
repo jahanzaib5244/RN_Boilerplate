@@ -10,8 +10,19 @@ import {
 import MaskedView from '@react-native-masked-view/masked-view';
 import useTimePicker from './useTimePicker';
 import AppText from '../AppText/AppText';
+import {props, selectedTime} from './interface';
 
-export default function TimePicker() {
+const TimePicker: React.FC<props> = ({
+  onPressCancel = () => {},
+  onPressConfirm = () => {},
+  visible = false,
+  handelChange = (e: selectedTime) => {},
+  style = {},
+  confirmButtonText = 'Ok',
+  cancelButtonText = 'Cancel',
+  header = <></>,
+  ...other
+}) => {
   const {
     hoursAnimatedStyle,
     minutesAnimatedStyle,
@@ -21,7 +32,21 @@ export default function TimePicker() {
     typeGestureHandler,
     Hours,
     minutes,
-  } = useTimePicker();
+    onConfirm,
+  } = useTimePicker(handelChange, onPressConfirm);
+
+  const RenderTime = ({item, index}: {item: string; index: number}) => {
+    return (
+      <Animated.View
+        style={[
+          styles.item,
+          style?.timeTextContainer,
+          {marginTop: index === 0 ? 50 : 0},
+        ]}>
+        <Text style={[styles.time, style?.timeText]}>{item}</Text>
+      </Animated.View>
+    );
+  };
 
   const RenderedHours = () => {
     return (
@@ -32,25 +57,7 @@ export default function TimePicker() {
           {alignItems: 'flex-end'},
         ]}>
         {Hours.map((item, index) => {
-          return (
-            <Animated.View
-              key={index}
-              style={[
-                styles.item,
-                {
-                  marginTop: index === 0 ? 50 : 0,
-                  transform: [{rotateY: '10deg'}],
-                },
-              ]}>
-              <Text
-                style={{
-                  fontSize: 24,
-                  fontWeight: '700',
-                }}>
-                {item}
-              </Text>
-            </Animated.View>
-          );
+          return <RenderTime key={index} item={item} index={index} />;
         })}
       </Animated.View>
     );
@@ -59,11 +66,7 @@ export default function TimePicker() {
     return (
       <Animated.View style={[minutesAnimatedStyle, styles.items_container]}>
         {minutes.map((item, index) => (
-          <View
-            key={index}
-            style={[styles.item, {marginTop: index === 0 ? 50 : 0}]}>
-            <Text style={{fontSize: 24, fontWeight: '700'}}>{item}</Text>
-          </View>
+          <RenderTime key={index} item={item} index={index} />
         ))}
       </Animated.View>
     );
@@ -73,11 +76,7 @@ export default function TimePicker() {
     return (
       <Animated.View style={[typeAnimatedStyle, styles.items_container]}>
         {['AM', 'PM'].map((item, index) => (
-          <View
-            key={index}
-            style={[styles.item, {marginTop: index === 0 ? 50 : 0}]}>
-            <Text style={{fontSize: 24, fontWeight: '700'}}>{item}</Text>
-          </View>
+          <RenderTime key={index} item={item} index={index} />
         ))}
       </Animated.View>
     );
@@ -93,41 +92,64 @@ export default function TimePicker() {
   );
 
   return (
-    <Modal transparent visible={true}>
+    <Modal {...other} transparent visible={visible}>
       <GestureHandlerRootView style={styles.back_drop}>
         <View style={styles.root}>
-          <MaskedView androidRenderingMode={'software'} {...{maskElement}}>
-            <View style={styles.masked_view} />
-            <View style={styles.maked_view_black} />
-            <View style={styles.masked_view} />
-          </MaskedView>
-          <View style={styles.absolute_container}>
-            <View style={styles.gesture_wrapper}>
-              <PanGestureHandler onGestureEvent={hoursGestureHandler}>
-                <Animated.View style={StyleSheet.absoluteFillObject} />
-              </PanGestureHandler>
-            </View>
-            <View style={styles.gesture_wrapper}>
-              <PanGestureHandler onGestureEvent={minutesGestureHandler}>
-                <Animated.View style={StyleSheet.absoluteFillObject} />
-              </PanGestureHandler>
-            </View>
-            <View style={styles.gesture_wrapper}>
-              <PanGestureHandler onGestureEvent={typeGestureHandler}>
-                <Animated.View style={StyleSheet.absoluteFillObject} />
-              </PanGestureHandler>
+          {header}
+          <View>
+            <MaskedView androidRenderingMode={'software'} {...{maskElement}}>
+              <View style={styles.masked_view} />
+              <View style={styles.maked_view_black} />
+              <View style={styles.masked_view} />
+            </MaskedView>
+            <View style={styles.absolute_container}>
+              <View style={styles.gesture_wrapper}>
+                <PanGestureHandler onGestureEvent={hoursGestureHandler}>
+                  <Animated.View style={StyleSheet.absoluteFillObject} />
+                </PanGestureHandler>
+              </View>
+              <View style={styles.gesture_wrapper}>
+                <PanGestureHandler onGestureEvent={minutesGestureHandler}>
+                  <Animated.View style={StyleSheet.absoluteFillObject} />
+                </PanGestureHandler>
+              </View>
+              <View style={styles.gesture_wrapper}>
+                <PanGestureHandler onGestureEvent={typeGestureHandler}>
+                  <Animated.View style={StyleSheet.absoluteFillObject} />
+                </PanGestureHandler>
+              </View>
             </View>
           </View>
-          <View style={styles.buttons}>
-            <Pressable>
-              <Text style={styles.btn_txt}>Cancel</Text>
+          <View style={[styles.buttons, style.buttonsContainer]}>
+            <Pressable
+              onPress={onPressCancel}
+              style={[style?.footerButton, style.cancelButton]}>
+              <Text
+                style={[
+                  styles.btn_txt,
+                  style?.footerButtonsText,
+                  style?.cancelButtonText,
+                ]}>
+                {cancelButtonText}
+              </Text>
             </Pressable>
-            <Pressable>
-              <Text style={styles.btn_txt}>Ok</Text>
+            <Pressable
+              onPress={onConfirm}
+              style={[style?.footerButton, style.confirmButton]}>
+              <Text
+                style={[
+                  styles.btn_txt,
+                  style?.footerButtonsText,
+                  style?.confirmButtonText,
+                ]}>
+                {confirmButtonText}
+              </Text>
             </Pressable>
           </View>
         </View>
       </GestureHandlerRootView>
     </Modal>
   );
-}
+};
+
+export default TimePicker;

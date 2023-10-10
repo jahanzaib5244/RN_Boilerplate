@@ -1,4 +1,4 @@
-import {View} from 'react-native';
+import {View, Text} from 'react-native';
 import React, {useState} from 'react';
 import {AppButton, AppInput, TimePicker} from '../../components';
 import {useNavigation} from '@react-navigation/native';
@@ -15,11 +15,7 @@ const OnBoard = () => {
   const [value, setValue] = useState('');
   const dispatch = useDispatch();
   const changeLan = () => {
-    // dispatch(changeLanguage('fr'));
-    RunToast({
-      title: 'hello',
-      subTitle: 'hello this is subtitle',
-    });
+    dispatch(changeLanguage('fr'));
   };
   return (
     <View>
@@ -29,8 +25,17 @@ const OnBoard = () => {
         onChangeText={e => setValue(e)}
         error={'hello'}
       />
-      <AppButton title={'show Toast Message'} onPress={() => changeLan()} />
-      <TimePicker />
+      <AppButton title={t('greeting')} onPress={() => changeLan()} />
+      <AppButton
+        title={'show Toast Message'}
+        onPress={() =>
+          RunToast({
+            title: 'hello',
+            subTitle: 'hello this is subtitle',
+          })
+        }
+      />
+      <TimePicker visible={false} />
       <AppButton
         title={'show Alert'}
         onPress={() => showAlert({title: 'alert', message: 'message'})}
