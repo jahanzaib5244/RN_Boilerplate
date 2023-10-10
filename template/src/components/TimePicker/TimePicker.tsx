@@ -1,9 +1,12 @@
-import {View, Text, StyleSheet} from 'react-native';
+import {View, Text, Modal, Pressable, StyleSheet} from 'react-native';
 import React from 'react';
 import {styles} from './styles';
 import Animated from 'react-native-reanimated';
 
-import {PanGestureHandler} from 'react-native-gesture-handler';
+import {
+  GestureHandlerRootView,
+  PanGestureHandler,
+} from 'react-native-gesture-handler';
 import MaskedView from '@react-native-masked-view/masked-view';
 import useTimePicker from './useTimePicker';
 import AppText from '../AppText/AppText';
@@ -28,13 +31,27 @@ export default function TimePicker() {
           styles.items_container,
           {alignItems: 'flex-end'},
         ]}>
-        {Hours.map((item, index) => (
-          <View
-            key={index}
-            style={[styles.item, {marginTop: index === 0 ? 50 : 0}]}>
-            <Text style={{fontSize: 24, fontWeight: '700'}}>{item}</Text>
-          </View>
-        ))}
+        {Hours.map((item, index) => {
+          return (
+            <Animated.View
+              key={index}
+              style={[
+                styles.item,
+                {
+                  marginTop: index === 0 ? 50 : 0,
+                  transform: [{rotateY: '10deg'}],
+                },
+              ]}>
+              <Text
+                style={{
+                  fontSize: 24,
+                  fontWeight: '700',
+                }}>
+                {item}
+              </Text>
+            </Animated.View>
+          );
+        })}
       </Animated.View>
     );
   };
@@ -76,29 +93,41 @@ export default function TimePicker() {
   );
 
   return (
-    <View style={styles.root}>
-      <MaskedView androidRenderingMode={'software'} {...{maskElement}}>
-        <View style={styles.masked_view} />
-        <View style={styles.maked_view_black} />
-        <View style={styles.masked_view} />
-      </MaskedView>
-      <View style={styles.absolute_container}>
-        <View style={styles.gesture_wrapper}>
-          <PanGestureHandler onGestureEvent={hoursGestureHandler}>
-            <Animated.View style={StyleSheet.absoluteFillObject} />
-          </PanGestureHandler>
+    <Modal transparent visible={true}>
+      <GestureHandlerRootView style={styles.back_drop}>
+        <View style={styles.root}>
+          <MaskedView androidRenderingMode={'software'} {...{maskElement}}>
+            <View style={styles.masked_view} />
+            <View style={styles.maked_view_black} />
+            <View style={styles.masked_view} />
+          </MaskedView>
+          <View style={styles.absolute_container}>
+            <View style={styles.gesture_wrapper}>
+              <PanGestureHandler onGestureEvent={hoursGestureHandler}>
+                <Animated.View style={StyleSheet.absoluteFillObject} />
+              </PanGestureHandler>
+            </View>
+            <View style={styles.gesture_wrapper}>
+              <PanGestureHandler onGestureEvent={minutesGestureHandler}>
+                <Animated.View style={StyleSheet.absoluteFillObject} />
+              </PanGestureHandler>
+            </View>
+            <View style={styles.gesture_wrapper}>
+              <PanGestureHandler onGestureEvent={typeGestureHandler}>
+                <Animated.View style={StyleSheet.absoluteFillObject} />
+              </PanGestureHandler>
+            </View>
+          </View>
+          <View style={styles.buttons}>
+            <Pressable>
+              <Text style={styles.btn_txt}>Cancel</Text>
+            </Pressable>
+            <Pressable>
+              <Text style={styles.btn_txt}>Ok</Text>
+            </Pressable>
+          </View>
         </View>
-        <View style={styles.gesture_wrapper}>
-          <PanGestureHandler onGestureEvent={minutesGestureHandler}>
-            <Animated.View style={StyleSheet.absoluteFillObject} />
-          </PanGestureHandler>
-        </View>
-        <View style={styles.gesture_wrapper}>
-          <PanGestureHandler onGestureEvent={typeGestureHandler}>
-            <Animated.View style={StyleSheet.absoluteFillObject} />
-          </PanGestureHandler>
-        </View>
-      </View>
-    </View>
+      </GestureHandlerRootView>
+    </Modal>
   );
 }

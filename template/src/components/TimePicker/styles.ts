@@ -10,6 +10,7 @@ export const styles = StyleSheet.create({
     paddingVertical: 20,
     marginTop: 10,
     columnGap: 30,
+    borderRadius: 10,
   },
   text: {
     fontSize: 22,
@@ -60,5 +61,23 @@ export const styles = StyleSheet.create({
     fontSize: 22,
     marginTop: 60,
     fontWeight: '700',
+  },
+  back_drop: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'rgba(0,0,0,0.4)',
+  },
+  buttons: {
+    flexDirection: 'row',
+    columnGap: 15,
+    justifyContent: 'flex-end',
+    paddingHorizontal: 25,
+    paddingTop: 10,
+  },
+  btn_txt: {
+    fontSize: 16,
+    fontWeight: '600',
+    color: COLORS.primary,
   },
 });
