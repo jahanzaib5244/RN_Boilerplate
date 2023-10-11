@@ -6,6 +6,7 @@ import {
 import Login from '../../screens/Login/Login';
 import Signup from '../../screens/Signup/Signup';
 import OnBoard from '../../screens/OnBoard/OnBoard';
+import {useColorScheme} from '../../utils/ColorScheme';
 
 const Stack = createStackNavigator();
 interface screenOption {
@@ -18,6 +19,7 @@ const screens: Array<screenOption> = [
   {
     name: 'OnBoard',
     component: OnBoard,
+    options: {headerShown: false},
   },
   {
     name: 'Signup',
@@ -29,8 +31,13 @@ const screens: Array<screenOption> = [
   },
 ];
 const AuthNavigator = () => {
+  const {colors} = useColorScheme();
   return (
-    <Stack.Navigator>
+    <Stack.Navigator
+      screenOptions={{
+        headerTintColor: colors?.white,
+        headerBackgroundContainerStyle: {backgroundColor: colors?.black},
+      }}>
       {screens.map((item, index) => (
         <Stack.Screen
           key={index}

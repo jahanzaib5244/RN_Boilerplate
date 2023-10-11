@@ -1,4 +1,4 @@
-export interface paramsList {
+export interface Routes {
   // auth Navigation
   OnBoard: undefined;
   Signup: undefined;

@@ -4,6 +4,7 @@ import {
   createStackNavigator,
 } from '@react-navigation/stack';
 import TabNavigator from './TabNavigator';
+import {useColorScheme} from '../../utils/ColorScheme';
 
 const Stack = createStackNavigator();
 
@@ -19,6 +20,7 @@ const screens: Array<screenOption> = [
     component: TabNavigator,
   },
 ];
+const {colors} = useColorScheme();
 
 const HomeNavigator = () => {
   return (
