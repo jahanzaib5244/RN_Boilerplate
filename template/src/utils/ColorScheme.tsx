@@ -82,7 +82,6 @@ export const useColorScheme = () => {
   const toggle = useCallback(
     async (x: number, y: number) => {
       try {
-        console.log('toggled');
         const newColorScheme = colorScheme === 'light' ? 'dark' : 'light';
         dispatch({
           ...ctx,

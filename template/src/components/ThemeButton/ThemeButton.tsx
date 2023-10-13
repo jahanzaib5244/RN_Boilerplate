@@ -8,7 +8,6 @@ const ThemeButton = () => {
   const tap = Gesture.Tap()
     .runOnJS(true)
     .onStart(e => {
-      console.log('first');
       if (!active) {
         toggle(e.absoluteX, e.absoluteY);
       }
