@@ -4,7 +4,7 @@ import React, {
   useImperativeHandle,
   useCallback,
 } from 'react';
-import AwesomeAlert from 'react-native-awesome-alerts';
+import AwesomeAlert from 'react-native-template-alerts';
 import {AlertHandler, AlertOptions} from './interface';
 import {COLORS} from '../../constants';
 
