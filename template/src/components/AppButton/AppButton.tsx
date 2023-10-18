@@ -16,10 +16,11 @@ const AppButton: React.FC<props> = ({
   return (
     <Pressable
       disabled={loading}
+      testID='button.presaable'
       onPress={onPress}
       style={[styles.button, style]}>
       {loading ? (
-        <ActivityIndicator size={30} color={activityColor} />
+        <ActivityIndicator testID='activity.indicator' size={30} color={activityColor} />
       ) : (
         <AppText style={[styles.button_text, titleStyle]}>{title}</AppText>
       )}

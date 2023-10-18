@@ -1,0 +1,120 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App Button Component snapshot testing button 1`] = `
+<View
+  accessibilityState={
+    {
+      "busy": undefined,
+      "checked": undefined,
+      "disabled": false,
+      "expanded": undefined,
+      "selected": undefined,
+    }
+  }
+  accessibilityValue={
+    {
+      "max": undefined,
+      "min": undefined,
+      "now": undefined,
+      "text": undefined,
+    }
+  }
+  accessible={true}
+  collapsable={false}
+  focusable={true}
+  onBlur={[Function]}
+  onClick={[Function]}
+  onFocus={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    [
+      {
+        "alignItems": "center",
+        "alignSelf": "center",
+        "backgroundColor": "#0A84FF",
+        "borderRadius": 25,
+        "height": 50,
+        "justifyContent": "center",
+        "marginVertical": 10,
+        "width": 675,
+      },
+      {},
+    ]
+  }
+  testID="button.presaable"
+>
+  <Text
+    style={
+      [
+        {
+          "color": "#000000",
+          "fontSize": 15,
+        },
+        [
+          {
+            "color": "#FFFFFF",
+            "fontSize": 18,
+            "fontWeight": "500",
+          },
+          {},
+        ],
+      ]
+    }
+  >
+    Title
+  </Text>
+</View>
+`;
+
+exports[`AppText Component rendered 1`] = `
+<Text
+  style={
+    [
+      {
+        "color": "#000000",
+        "fontSize": 15,
+      },
+      undefined,
+    ]
+  }
+>
+  hello
+</Text>
+`;
+
+exports[`AppText Component snapshot testing 1`] = `
+<Text
+  style={
+    [
+      {
+        "color": "#000000",
+        "fontSize": 15,
+      },
+      undefined,
+    ]
+  }
+>
+  hello
+</Text>
+`;
+
+exports[`AppText Component snapshot testing Apptext 1`] = `
+<Text
+  style={
+    [
+      {
+        "color": "#000000",
+        "fontSize": 15,
+      },
+      undefined,
+    ]
+  }
+>
+  hello
+</Text>
+`;

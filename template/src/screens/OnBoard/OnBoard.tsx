@@ -1,20 +1,10 @@
-import {View} from 'react-native';
+import {View, Text} from 'react-native';
 import React, {useState} from 'react';
 import {AppHeader} from '../../components';
-import {useNavigation} from '@react-navigation/native';
-import {NavigationProp} from '@react-navigation/native';
-import {Routes} from 'src/utils/Routes';
-import {useTranslation} from 'react-i18next';
-import {useDispatch} from 'react-redux';
-import {changeLanguage} from 'src/redux/PersistedReducer/actions';
-import {useColorScheme} from 'src/utils/ColorScheme';
-import ThemeButton from 'src/components/ThemeButton/ThemeButton';
 
 const OnBoard = () => {
-  const {colors} = useColorScheme();
-
   return (
-    <View style={{flex: 1, backgroundColor: colors?.black}}>
+    <View style={{flex: 1, backgroundColor: 'white'}}>
       <AppHeader title="Home" showLeftButton={false} />
       <View
         style={{
@@ -22,7 +12,7 @@ const OnBoard = () => {
           alignItems: 'center',
           justifyContent: 'center',
         }}>
-        <ThemeButton />
+        <Text>Hello world</Text>
       </View>
     </View>
   );
