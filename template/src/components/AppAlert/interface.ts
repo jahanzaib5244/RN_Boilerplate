@@ -1,4 +1,4 @@
-import {AwesomeAlertProps} from 'react-native-awesome-alerts';
+import {AwesomeAlertProps} from 'react-native-template-alerts';
 
 export interface AlertOptions extends Omit<AwesomeAlertProps, ''> {
   cancelText?: string;
