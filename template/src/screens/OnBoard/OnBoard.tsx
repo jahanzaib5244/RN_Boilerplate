@@ -1,6 +1,7 @@
 import {View, Text} from 'react-native';
-import React, {useState} from 'react';
+import React from 'react';
 import {AppHeader} from '../../components';
+import {translate} from 'src/utils';
 
 const OnBoard = () => {
   return (
@@ -12,7 +13,7 @@ const OnBoard = () => {
           alignItems: 'center',
           justifyContent: 'center',
         }}>
-        <Text>Hello world</Text>
+        <Text>{translate('greeting')}</Text>
       </View>
     </View>
   );

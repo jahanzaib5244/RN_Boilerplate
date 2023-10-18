@@ -15,3 +15,9 @@ i18next.use(initReactI18next).init({
 });
 
 export default i18next;
+
+type str = typeof en;
+
+export const translate = (str: keyof str) => {
+  return i18next.t(str);
+};
