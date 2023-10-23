@@ -7,7 +7,6 @@ import {
   ImageShader,
   Circle,
   dist,
-  useImage,
 } from '@shopify/react-native-skia';
 import type {SkImage} from '@shopify/react-native-skia';
 import {StatusBar} from 'react-native';
@@ -142,7 +141,12 @@ export const useColorScheme = () => {
     },
     [colorScheme, dispatch],
   );
-  return {colorScheme, toggle, colors: ctx.colors as typeof ctx.colors, active: ctx.active};
+  return {
+    colorScheme,
+    toggle,
+    colors: ctx.colors as typeof ctx.colors,
+    active: ctx.active,
+  };
 };
 
 export const ColorSchemeProvider = ({
@@ -173,7 +177,10 @@ export const ColorSchemeProvider = ({
           value={{
             colorScheme,
             dispatch,
-            colors: colorScheme === 'light' ? darkColors : lightColors as typeof darkColors ,
+            colors:
+              colorScheme === 'light'
+                ? darkColors
+                : (lightColors as typeof darkColors),
             active,
             overlay1,
             overlay2,
