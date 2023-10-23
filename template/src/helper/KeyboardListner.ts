@@ -1,7 +1,7 @@
 import {Keyboard, KeyboardEvent} from 'react-native';
 import {useEffect, useState} from 'react';
 
-const KeyboardListner = () => {
+export const KeyboardListner = () => {
   const [height, setheight] = useState<number>(0);
   useEffect(() => {
     const showKeyboard = Keyboard.addListener(
@@ -21,5 +21,3 @@ const KeyboardListner = () => {
 
   return {height};
 };
-
-export default KeyboardListner;
