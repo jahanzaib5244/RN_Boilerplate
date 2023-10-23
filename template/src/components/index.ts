@@ -6,3 +6,4 @@ export {default as AppAlert} from './AppAlert/AppAlert';
 export {default as TimePicker} from './TimePicker/TimePicker';
 export {default as AppHeader} from './AppHeader/AppHeader';
 export {default as ThemeButton} from './ThemeButton/ThemeButton';
+export {default as AppScreen} from './AppScreen/AppScreen';

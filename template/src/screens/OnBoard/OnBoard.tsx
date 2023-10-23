@@ -1,7 +1,7 @@
 import {View, Text} from 'react-native';
 import React from 'react';
 import {AppHeader} from '../../components';
-import {translate} from 'src/utils';
+import {translate} from 'src/locales';
 
 const OnBoard = () => {
   return (
