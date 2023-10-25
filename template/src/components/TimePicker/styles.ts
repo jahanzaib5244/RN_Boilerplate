@@ -1,10 +1,11 @@
 import {StyleSheet} from 'react-native';
 
-import {COLORS, DIMENSION} from '../../constants';
+import {COLORS} from '../../constants';
+import {width} from 'src/helper';
 
 export const styles = StyleSheet.create({
   root: {
-    width: DIMENSION.width * 0.9,
+    width: width * 0.9,
     alignSelf: 'center',
     backgroundColor: COLORS.white,
     paddingVertical: 20,
@@ -17,7 +18,7 @@ export const styles = StyleSheet.create({
     fontWeight: '700',
   },
   masked_elemnt_wrapper: {
-    width: DIMENSION.width * 0.7,
+    width: width * 0.7,
     overflow: 'hidden',
     alignSelf: 'center',
     flexDirection: 'row',
@@ -26,7 +27,7 @@ export const styles = StyleSheet.create({
     height: 50,
     justifyContent: 'center',
     alignItems: 'center',
-    width: (DIMENSION.width * 0.7) / 4,
+    width: (width * 0.7) / 4,
   },
   absolute_container: {
     flexDirection: 'row',
@@ -34,12 +35,12 @@ export const styles = StyleSheet.create({
     top: 20,
     justifyContent: 'space-around',
     height: 150,
-    width: DIMENSION.width * 0.7,
+    width: width * 0.7,
     alignSelf: 'center',
   },
   gesture_wrapper: {
     height: '100%',
-    width: (DIMENSION.width * 0.7) / 3,
+    width: (width * 0.7) / 3,
   },
   masked_view: {
     height: 50,
@@ -50,10 +51,10 @@ export const styles = StyleSheet.create({
     backgroundColor: '#000000',
   },
   items_container: {
-    width: (DIMENSION.width * 0.7) / 3,
+    width: (width * 0.7) / 3,
   },
   masked_view_wrapper: {
-    width: DIMENSION.width * 0.7,
+    width: width * 0.7,
     alignSelf: 'center',
     overflow: 'hidden',
   },

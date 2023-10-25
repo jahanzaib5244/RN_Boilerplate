@@ -32,7 +32,7 @@ export const dark_Colors = {
   white: '#000',
   gray: '#fefefe',
   primary: '#0A84FF',
-  black_text: '#494949',
+  black_text: '#fefefe',
   light_gray: '#F2F2F2',
   danger: '#DC3545',
 };

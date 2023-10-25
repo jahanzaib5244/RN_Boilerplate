@@ -1,10 +1,11 @@
 import {StyleSheet} from 'react-native';
-import {COLORS, DIMENSION} from '../../constants';
+import {COLORS} from '../../constants';
+import {width} from 'src/helper';
 
 export const styles = StyleSheet.create({
   button: {
     height: 50,
-    width: DIMENSION.width * 0.9,
+    width: width * 0.9,
     backgroundColor: COLORS.primary,
     borderRadius: 25,
     alignSelf: 'center',

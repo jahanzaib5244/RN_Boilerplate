@@ -1,7 +1,7 @@
 import React from 'react';
 import {Gesture, GestureDetector} from 'react-native-gesture-handler';
 import Feather from 'react-native-vector-icons/Feather';
-import {useColorScheme} from '../../utils/ColorScheme';
+import {useColorScheme} from 'src/utils/ColorScheme';
 
 const ThemeButton = () => {
   const {toggle, colorScheme, active, colors} = useColorScheme();
@@ -16,7 +16,7 @@ const ThemeButton = () => {
     <GestureDetector gesture={tap}>
       <Feather
         name={colorScheme === 'light' ? 'moon' : 'sun'}
-        color={colors?.white}
+        color={colors?.black}
         size={32}
       />
     </GestureDetector>

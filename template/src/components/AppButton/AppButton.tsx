@@ -20,7 +20,7 @@ const AppButton: React.FC<props> = ({
       disabled={loading}
       testID="button.presaable"
       onPress={onPress}
-      style={[styles.button, style]}>
+      style={[styles.button, {backgroundColor: colors?.black_text}, style]}>
       {loading ? (
         <ActivityIndicator
           testID="activity.indicator"
@@ -28,7 +28,10 @@ const AppButton: React.FC<props> = ({
           color={activityColor}
         />
       ) : (
-        <AppText style={[styles.button_text, titleStyle]}>{title}</AppText>
+        <AppText
+          style={[styles.button_text, {color: colors?.white}, titleStyle]}>
+          {title}
+        </AppText>
       )}
     </Pressable>
   );

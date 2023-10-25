@@ -25,22 +25,22 @@ import {
   useSharedValue,
   withTiming,
 } from 'react-native-reanimated';
-import {colors} from '../constants/COLORS';
 
-import ViewShot, {captureRef} from 'react-native-view-shot';
+import ViewShot from 'react-native-view-shot';
+import {colors} from 'src/constants/COLORS';
 
 const {width, height} = Dimensions.get('window');
 const corners = [vec(0, 0), vec(width, 0), vec(width, height), vec(0, height)];
 
 interface ColorSchemeProviderProps {
   children: ReactNode;
-  lightColors: colors;
-  darkColors: colors;
+  lightColors: Record<string, string>;
+  darkColors: Record<string, string>;
 }
 
 interface ColorScheme {
   colorScheme: ColorSchemeName;
-  colors: colors | null;
+  colors: any;
   active: boolean;
   overlay1: SkImage | null;
   overlay2: SkImage | null;
@@ -60,7 +60,7 @@ const wait = async (ms: number) =>
 
 const defaultValue: ColorScheme = {
   colorScheme: Appearance.getColorScheme() ?? 'light',
-  colors: null,
+  colors: {},
   active: false,
   overlay1: null,
   overlay2: null,
@@ -77,7 +77,7 @@ export const useColorScheme = () => {
   if (ctx === null) {
     throw new Error('No ColorScheme context context found');
   }
-  const {colorScheme, dispatch, circle, ref, transition} = ctx;
+  const {colorScheme, dispatch, circle, ref, colors, transition} = ctx;
   const toggle = useCallback(
     async (x: number, y: number) => {
       try {
@@ -144,7 +144,7 @@ export const useColorScheme = () => {
   return {
     colorScheme,
     toggle,
-    colors: ctx.colors as typeof ctx.colors,
+    colors: ctx.colors as unknown as colors,
     active: ctx.active,
   };
 };
@@ -157,7 +157,6 @@ export const ColorSchemeProvider = ({
   const circle = useSharedValue({x: 0, y: 0, r: 0});
   const transition = useSharedValue(0);
   const ref = useRef(null);
-
   const [{colorScheme, active, overlay1, overlay2}, dispatch] = useReducer(
     colorSchemeReducer,
     defaultValue,
@@ -177,10 +176,9 @@ export const ColorSchemeProvider = ({
           value={{
             colorScheme,
             dispatch,
-            colors:
-              colorScheme === 'light'
-                ? darkColors
-                : (lightColors as typeof darkColors),
+            colors: (colorScheme === 'light'
+              ? lightColors
+              : darkColors) as unknown as colors,
             active,
             overlay1,
             overlay2,

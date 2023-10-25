@@ -144,7 +144,7 @@ function ScreenWithScrolling(props: ScreenProps) {
 export default function AppScreen(props: ScreenProps) {
   const {colors} = useColorScheme();
   const {
-    backgroundColor = colors?.black ?? '#000',
+    backgroundColor = colors?.white ?? '#000',
     KeyboardAvoidingViewProps,
     keyboardOffset = 0,
     safeAreaEdges,
@@ -154,8 +154,6 @@ export default function AppScreen(props: ScreenProps) {
 
   return (
     <View style={[$containerStyle, {backgroundColor}, edgeStyle]}>
-      {/* <StatusBar style={statusBarStyle} {...StatusBarProps} /> */}
-
       <KeyboardAvoidingView
         behavior={isIos ? 'padding' : undefined}
         keyboardVerticalOffset={keyboardOffset}
