@@ -130,15 +130,15 @@ Once you're up and running, you are good to go 💪.
 
 ## Compoennts Usage
 
-- [AppScreen]('template/AppScreen.md')
-- [AppButton]('template/AppButton.md')
-- [AppText]('template/AppText.md')
-- [AppInput]('template/AppInput.md')
-- [AppAlert]('template/AppAlert.md')
-- [AppDropdown]('template/AppDropdown.md')
-- [DatePicker]('template/DatePicker.md')
-- [TimePicker]('template/TimePicker.md')
-- [ThemeButton]('template/ThemeButton.md')
+- [AppScreen](AppScreen.md)
+- [AppButton]('AppButton.md)
+- [AppText](AppText.md)
+- [AppInput](AppInput.md)
+- [AppAlert](AppAlert.md)
+- [AppDropdown](AppDropdown.md)
+- [DatePicker](DatePicker.md)
+- [TimePicker](TimePicker.md)
+- [ThemeButton](ThemeButton.md)
 
 ## 🤔 Is this starter for you?
 
