@@ -1,12 +1,25 @@
 import {View, Text} from 'react-native';
-import React from 'react';
+import React, {useRef, useState} from 'react';
 import {translate} from 'src/locales/i18next';
 import {useColorScheme} from 'src/utils/ColorScheme';
-import {AppButton, AppScreen, AppText, ThemeButton} from 'src/components';
-import {RunToast, Width, showAlert} from 'src/helper';
+import {
+  AppButton,
+  AppDropdown,
+  AppInput,
+  AppScreen,
+  AppText,
+  BottomSheet,
+  ThemeButton,
+} from 'src/components';
+import {RunToast, Width, height, showAlert, width} from 'src/helper';
+import {BottomSheetHandler} from 'src/components/BottomSheet/interface';
 
 const OnBoard = () => {
   const {colors} = useColorScheme();
+  const bottomsheetRef = useRef<BottomSheetHandler>(null);
+
+  const [email, setemail] = useState('');
+
   return (
     <AppScreen
       safeAreaEdges={['bottom', 'top']}
@@ -28,6 +41,12 @@ const OnBoard = () => {
           }}>
           {translate('greeting')}
         </AppText>
+        <AppInput
+          label="Email Address"
+          onChangeText={e => setemail(e)}
+          style={{width: width * 0.9}}
+          value={email}
+        />
         <AppButton
           title="Hello Alert"
           onPress={() => showAlert({title: 'alert', message: 'message'})}
@@ -37,6 +56,20 @@ const OnBoard = () => {
           onPress={() => RunToast({title: 'hello', subTitle: 'hello toast'})}
         />
         <ThemeButton />
+
+        <AppDropdown
+          items={Array(5)
+            .fill(0)
+            .map((_, index) => `item ${index + 1}`)}
+          placeholder="Select item..."
+        />
+        <AppButton
+          title="Open Bottom sheet"
+          onPress={() => bottomsheetRef.current?.toggle()}
+        />
+        <BottomSheet height={height * 0.5} ref={bottomsheetRef}>
+          <View style={{flex: 1, backgroundColor: colors?.black_text}} />
+        </BottomSheet>
       </View>
     </AppScreen>
   );

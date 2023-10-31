@@ -21,4 +21,5 @@ export default {
   food_image: require('../assets/images/food_image.png'),
   sight_image: require('../assets/images/sight_image.png'),
   user: require('../assets/images/user.png'),
+  filled_down_arrow: require('../assets/icons/filled_down_arrow.png'),
 };

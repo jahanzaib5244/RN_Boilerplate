@@ -27,6 +27,7 @@
     "react-native-calendars": "^1.1301.0",
     "react-native-exception-handler": "^2.10.10",
     "react-native-gesture-handler": "^2.13.1",
+    "react-native-material-menu": "^2.0.0",
     "react-native-mmkv": "^2.10.2",
     "react-native-paper": "^5.10.6",
     "react-native-reanimated": "^3.5.4",

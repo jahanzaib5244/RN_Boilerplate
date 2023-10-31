@@ -14,7 +14,6 @@ export const PersistedReducer = createSlice({
   extraReducers: builder => {
     builder
       .addCase(changeLanguage, (state, {payload}) => {
-        console.log('language Change');
         state.language = payload;
       })
       .addCase(changeTheme, (state, {payload}) => {
