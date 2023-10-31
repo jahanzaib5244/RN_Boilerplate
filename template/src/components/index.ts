@@ -7,3 +7,5 @@ export {default as TimePicker} from './TimePicker/TimePicker';
 export {default as AppHeader} from './AppHeader/AppHeader';
 export {default as ThemeButton} from './ThemeButton/ThemeButton';
 export {default as AppScreen} from './AppScreen/AppScreen';
+export {default as BottomSheet} from './BottomSheet/BottomSheet';
+export {default as AppDropdown} from './AppDropdown/AppDropdown';

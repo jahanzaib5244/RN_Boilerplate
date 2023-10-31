@@ -5,6 +5,7 @@ import {useColorScheme} from 'src/utils/ColorScheme';
 
 const ThemeButton = () => {
   const {toggle, colorScheme, active, colors} = useColorScheme();
+
   const tap = Gesture.Tap()
     .runOnJS(true)
     .onStart(e => {
@@ -12,6 +13,7 @@ const ThemeButton = () => {
         toggle(e.absoluteX, e.absoluteY);
       }
     });
+
   return (
     <GestureDetector gesture={tap}>
       <Feather

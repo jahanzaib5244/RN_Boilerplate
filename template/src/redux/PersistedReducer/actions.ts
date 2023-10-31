@@ -1,7 +1,6 @@
 import {createAction} from '@reduxjs/toolkit';
 
 export const changeLanguage = createAction('ChangeLanguage', lng => {
-  console.log(lng);
   return {payload: lng};
 });
 

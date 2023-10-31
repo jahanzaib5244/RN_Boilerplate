@@ -42,8 +42,6 @@ export function useSafeAreaInsetsStyle(
     };
   }, {});
 
-  console.log(`${property}${propertySuffixMap['top']}`);
-
   return {
     edgeStyle: safeAreaEdges.reduce((acc, e) => {
       return {
