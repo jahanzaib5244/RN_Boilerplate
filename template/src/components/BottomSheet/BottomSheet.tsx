@@ -74,14 +74,9 @@ const BottomSheet = forwardRef<BottomSheetHandler, BottomSheetProps>(
       return translateY.value !== 0;
     }, [translateY.value]);
 
-    const maxScroll = useCallback(() => {
-      return translateY.value;
-    }, [translateY.value]);
-
-    useImperativeHandle(ref, () => ({scrollTo, isActive, maxScroll, toggle}), [
+    useImperativeHandle(ref, () => ({scrollTo, isActive, toggle}), [
       scrollTo,
       isActive,
-      maxScroll,
       height,
     ]);
 
