@@ -2,6 +2,9 @@ import {Platform, StyleSheet} from 'react-native';
 import {Height, Width, width} from 'src/helper';
 
 export const styles = StyleSheet.create({
+  gesture_handler: {
+    flex: 1,
+  },
   bottomSheetContainer: {
     width: '100%',
     position: 'absolute',

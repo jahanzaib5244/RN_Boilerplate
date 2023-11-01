@@ -5,7 +5,10 @@ import React, {
   forwardRef,
   useState,
 } from 'react';
-import {PanGestureHandler} from 'react-native-gesture-handler';
+import {
+  GestureHandlerRootView,
+  PanGestureHandler,
+} from 'react-native-gesture-handler';
 import Animated, {
   runOnJS,
   useAnimatedGestureHandler,
@@ -118,10 +121,9 @@ const BottomSheet = forwardRef<BottomSheetHandler, BottomSheetProps>(
 
     return (
       <Modal transparent={true} visible={openModal}>
-        <>
+        <GestureHandlerRootView style={styles.gesture_handler}>
           <Animated.View
             onTouchStart={() => {
-              // Dismiss the BottomSheet
               scrollTo(0);
             }}
             style={[
@@ -154,7 +156,7 @@ const BottomSheet = forwardRef<BottomSheetHandler, BottomSheetProps>(
               {children}
             </Animated.View>
           </PanGestureHandler>
-        </>
+        </GestureHandlerRootView>
       </Modal>
     );
   },

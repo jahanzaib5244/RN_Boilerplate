@@ -25,8 +25,10 @@ export const styles = StyleSheet.create({
   content_container: {
     width: width * 0.9,
     marginTop: 53,
-    height: Height(200),
+    maxHeight: Height(200),
     overflow: 'hidden',
+    borderWidth: Width(1),
+    borderColor: 'rgba(0,0,0,0.5)',
   },
   title: {
     paddingRight: 10,
