@@ -138,7 +138,6 @@ Once you're up and running, you are good to go 💪.
 - [AppDropdown](AppDropdown.md)
 - [DatePicker](DatePicker.md)
 - [TimePicker](TimePicker.md)
-- [ThemeButton](ThemeButton.md)
 
 ## 🤔 Is this starter for you?
 
