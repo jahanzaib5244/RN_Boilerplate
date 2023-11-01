@@ -1,34 +1,11 @@
-# react-native-calendar-date-picker
-
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
-
-<p align="center"><img src="https://firebasestorage.googleapis.com/v0/b/musafir-49f4d.appspot.com/o/range.png?alt=media&token=afcf6e15-e263-49d6-a0ed-1528403b5605&_gl=1*8ozs3i*_ga*MTcxMDI1NjE4My4xNjk3MTA2NTYz*_ga_CW55HF8NVT*MTY5NzEwOTYyMi4yLjEuMTY5NzEwOTY1MC4zMi4wLjA." alt="Showcase iOS" width="200" height="433">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://firebasestorage.googleapis.com/v0/b/musafir-49f4d.appspot.com/o/single.png?alt=media&token=9da52cbb-08ef-4cbf-a270-110099d46363&_gl=1*16fbwi6*_ga*MTcxMDI1NjE4My4xNjk3MTA2NTYz*_ga_CW55HF8NVT*MTY5NzEwOTYyMi4yLjEuMTY5NzEwOTcxMS42MC4wLjA." alt="Showcase iOS" width="200" height="433">
-<img src="https://firebasestorage.googleapis.com/v0/b/musafir-49f4d.appspot.com/o/view.png?alt=media&token=779a9a1c-a614-4a04-b61a-a1c3a63efdab&_gl=1*1p0p5yx*_ga*MTcxMDI1NjE4My4xNjk3MTA2NTYz*_ga_CW55HF8NVT*MTY5NzEwOTYyMi4yLjEuMTY5NzEwOTc0Ni4yNS4wLjA." alt="Showcase iOS" width="200" height="433"></p>
-
-##
-
-> **Note**: Make sure you have install [react-native-calendars](https://www.npmjs.com/package/react-native-calendars), [moment](https://www.npmjs.com/package/moment) instructions till step, before proceeding.
-
-## Installation
-
-using yarn:
-
-```sh
-yarn add react-native-calendar-date-picker
-```
-
-using npm:
-
-```sh
-npm install react-native-calendar-date-picker
-```
+# Date Picker Component Description
 
 ## Usage
 
 #### `Without Modal`
 
 ```javascript
-import DatePicker from "react-native-calendar-date-picker";
+import { DatePicker } from "src/components";
 
 function App() {
   return <DatePicker type={"view"} onChnage={(e) => console.log(e)} />;
@@ -38,7 +15,7 @@ function App() {
 #### `With Modal`
 
 ```javascript
-import { DatePicker } from "react-native-calendar-date-picker";
+import { DatePicker } from "src/components";
 
 function App() {
   const [picker, setPicker] = useState(false);
@@ -147,25 +124,3 @@ function App() {
 | titleColor             | `string` |      header title color       | #000            |
 | dayNameColor           | `string` | color of the date on calendar | #fFF            |
 | iconColor              | `string` |   calendar arrow icon Color   | #0000FF         |
-
-## Authors
-
-- [Muhammad Jahanzaib](https://github.com/jahanzaib5244/) - Initial code - [@jahanzaib5244](https://twitter.com/jahanzaib5244)
-
-See also the list of [contributors](https://github.com/jahanzaib5244/react-native-calendar-date-picker/contributors) who participated in this project.
-
-## Contributing
-
-We welcome contributions to react-native-calendar-date-picker.
-
-If you have an idea for a new feature or have discovered a bug, please open an issue.
-
-Don't forget to add a **title** and a **description** explaining the issue you're trying to solve and your proposed solution.
-
-Screenshots and Gifs are VERY helpful to add to the PR for reviews.
-
-Please DO NOT format the files - we're trying to keep a unified syntax and keep the reviewing process fast and simple.
-
-## Questions
-
-Feel free to [Contact me](mailto:jahanzaib5244@gmail.com) or [Create an issue](https://github.com/jahanzaib5244/react-native-calendar-date-picker/issues/new)
